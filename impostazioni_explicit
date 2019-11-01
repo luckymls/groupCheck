@@ -1,0 +1,48 @@
+<?php
+
+#Prv
+$status = $impostazioni[prv][status];
+if($status == 'administrator' || $status == 'creator')$isadmin = true;
+$moderatore = $impostazioni[prv][moderatore];
+$gestore = $impostazioni[prv][gestore];
+$libero = $impostazioni[prv][libero];
+$warn = $impostazioni[prv][warn];
+#Grp
+$c_admin = $impostazioni[grp][canc][admin];
+$c_utente = $impostazioni[grp][canc][utente];
+$silenziostato = $impostazioni[grp][silenzio];
+$entrata = $impostazioni[grp][centrata];
+$uscita = $impostazioni[grp][cuscita];
+$pin = $impostazioni[grp][cpin];
+$propic = $impostazioni[grp][propic];
+$ctitle = $impostazioni[grp][ctitle];
+$bloccoutenti = $impostazioni[grp][blocco][utenti];
+$bloccobot = $impostazioni[grp][blocco][bot];
+$warnmax = $impostazioni[grp][warn];
+$warnpun = $impostazioni[grp][warnpun];
+#General
+
+$str_cmd = array(
+'.',
+'!',
+'#',
+'/');
+if(in_array(substr($msg,0,1), $str_cmd)){
+$start_with_command = array();
+if(substr($msg,0,1)=='.')$start_with_command[comand] == '.';
+if(substr($msg,0,1)=='#')$start_with_command[comand] == '#';
+if(substr($msg,0,1)=='!')$start_with_command[comand] == '!';
+if(substr($msg,0,1)=='/')$start_with_command[comand] == '/';
+str_replace(substr($msg,0,1),'/',$msg);
+}
+
+$up = $update[message];
+$photo = $up[photo][0][file_id];
+$video = $up[video][file_id];
+$videon = $up[video_note][file_id];
+$audio = $up[audio][file_id];
+$voice = $up[voice][file_id];
+$sticker = $up[sticker][file_id];
+$gif = $up[document][file_id];
+
+if($photo || $video || $videon || $audio || $voice || $stiker || $gif)$ismedia = true;
